@@ -6,4 +6,21 @@ class RoomsController < ApplicationController
       @rooms = Room.all
     end
   end
+
+  def new
+    @room = Room.new
+  end
+
+  def create
+    @room = Room.new(room_params)
+    if @room.save
+      redirect_to root_path
+    else
+      render :new_room_path
+    end
+  end
+
+  def room_params
+    params.require(:room).permit(:name, :introduction, :price_per_night, :address, :room_image)
+  end
 end

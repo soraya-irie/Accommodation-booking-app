@@ -13,8 +13,8 @@
               <%= current_user.name %>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-              <li><%= link_to '施設の新規登録', "#", class: 'dropdown-item' %></li>
-              <li><%= link_to '予約済み一覧', "#", class: 'dropdown-item' %></li>
+              <li><%= link_to '施設の新規登録', new_room_path, class: 'dropdown-item' %></li>
+              <li><%= link_to '予約済み一覧', reservations_path, class: 'dropdown-item' %></li>
               <li><%= link_to 'アカウント設定', edit_user_registration_path, class: 'dropdown-item' %></li>
               <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item' %></li>
             </ul>

@@ -1,0 +1,28 @@
+<%= form_with(model: @room, local: true) do |form| %>
+  <div>
+    <%= form.label :name, "施設名" %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :introduction, "施設詳細" %>
+    <%= form.text_area :introduction %>
+  </div>
+  <div>
+    <%= form.label :price_per_night, "料金" %>
+    <%= form.number_field :price_per_night, step: 0.01 %>
+  </div>
+  <div>
+    <%= form.label :address, "住所" %>
+    <%= form.text_field :address %>
+  </div>
+  <div>
+    <%= form.label :room_image, "施設画像" %>
+    <%= form.file_field :room_image %>
+  </div>
+  <div>
+    <%= form.submit "登録する" %>
+  </div>
+  <div>
+    <%= link_to "戻る", :back %>
+  </div>
+<% end %>
