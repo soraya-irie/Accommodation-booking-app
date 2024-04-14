@@ -1,0 +1,8 @@
+/* app/assets/stylesheets/application.css */
+.form-group {
+  width: 100%; /* フォームの幅を調整 */
+}
+
+.form-label {
+  font-weight: bold; /* ラベルのフォントウェイトを調整 */
+}
