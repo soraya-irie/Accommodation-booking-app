@@ -6,3 +6,7 @@
 .form-label {
   font-weight: bold; /* ラベルのフォントウェイトを調整 */
 }
+
+.p-2 {
+  width: fit-content;
+}
