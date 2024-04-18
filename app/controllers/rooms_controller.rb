@@ -19,6 +19,14 @@ class RoomsController < ApplicationController
       render :new_room_path
     end
   end
+  
+  def show
+  end
+
+  def own
+    @rooms = Room.all
+    redirect_to new_room_path if @rooms.empty?  
+  end
 
   def room_params
     params.require(:room).permit(:name, :introduction, :price_per_night, :address, :room_image)
