@@ -10,6 +10,7 @@
         <th>チェックイン</th>
         <th>チェックアウト</th>
         <th>予定確定日時</th>
+        <th>編集/削除</th>
       </tr>
     </thead>
 
@@ -23,6 +24,11 @@
           <td><%= reservation.start_date %></td>
           <td><%= reservation.end_date %></td>
           <td><%= reservation.created_at %></td>
+          <td>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+          <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+        </svg></td>
+
         </tr>
       <% end %>
     </tbody>

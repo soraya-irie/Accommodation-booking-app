@@ -21,6 +21,21 @@ class RoomsController < ApplicationController
   end
   
   def show
+    @room = Room.find(params[:id])
+  end
+
+  def edit
+    @rooms = Room.all
+  end
+
+  def update
+  end
+
+  def destroy
+    @room = Room.find(params[:id])
+    @room.destroy
+    flash[:notice] = "ユーザーを削除しました"
+    redirect_to :rooms_own
   end
 
   def own

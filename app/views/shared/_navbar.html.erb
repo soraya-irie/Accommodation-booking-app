@@ -16,7 +16,7 @@
               <li><%= link_to '施設の新規登録', new_room_path, class: 'dropdown-item' %></li>
               <li><%= link_to '予約済み一覧', reservations_path, class: 'dropdown-item' %></li>
               <li><%= link_to '登録済み一覧', rooms_own_path, class: 'dropdown-item' %></li>
-              <li><%= link_to 'アカウント設定', edit_user_registration_path, class: 'dropdown-item' %></li>
+              <li><%= link_to 'アカウント設定', users_account_path, class: 'dropdown-item' %></li>
               <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item' %></li>
             </ul>
           </li>
