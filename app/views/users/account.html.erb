@@ -1,1 +1,26 @@
-<h2>アカウント</h2>
+<h2>アカウント設定画面</h2>
+<%= link_to "アカウントを編集", edit_user_registration_path %>
+<div class="container">
+  <div class="d-flex flex-column mb-3 align-items-center">
+    <%= form_with(model: @user, local: true) do |f| %>
+      <div class="field p-2">
+        <%= f.label :email, class: 'form-label' %><br/>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', disabled: true
+         %>
+      </div>
+
+      <div class="field p-2">
+        <%= f.label :password, class: 'form-label' %><br/>
+        <%= f.password_field :password, autocomplete: "current-password", class: 'form-control', value: '**********', disabled: true %>
+      </div>
+
+      <div class="p-2">
+        <%= link_to "プロフィール", users_profile_path %>
+      </div>
+
+      <div class="p-2">
+        <%= link_to "ホーム画面へ戻る", :root %>
+      </div>
+    <% end %>
+  </div>  
+</div>

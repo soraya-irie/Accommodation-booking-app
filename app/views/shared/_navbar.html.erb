@@ -8,10 +8,10 @@
       <ul class="navbar-nav ms-auto">
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <%= image_tag(current_user.icon_image, size: "30x30") if current_user.icon_image.attached? %>
+            <button class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= image_tag(current_user.icon_image.url, size: "30x30") %>
               <%= current_user.name %>
-            </a>
+            </button>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
               <li><%= link_to '施設の新規登録', new_room_path, class: 'dropdown-item' %></li>
               <li><%= link_to '予約済み一覧', reservations_path, class: 'dropdown-item' %></li>

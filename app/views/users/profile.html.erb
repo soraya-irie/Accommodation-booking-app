@@ -1,0 +1,30 @@
+<p>プロフィール画面</p>
+<div class="container">
+  <div class="d-flex flex-column mb-3 align-items-center">
+    <%= form_with(model: @user, local: true, html: { multipart: true }) do |form| %>
+      
+
+      <div class="p-2">
+     
+      </div>
+
+      <div class="p-2">
+        <%= form.label :name, "名前", class: 'form-label' %>
+        <%= form.text_field :name, class: 'form-control' %>
+      </div>
+
+      <div class="p-2">
+        <%= form.label :self_introduction, "自己紹介", class: 'form-label' %>
+        <%= form.text_area :self_introduction, rows: 5, class: 'form-control' %>
+      </div>
+      <div class="p-2">
+        <%= link_to "プロフィールを編集", users_profile_edit_path %>
+      </div>
+      <div class="p-2">
+        <%= link_to "アカウント画面へ戻る", users_account_path %>
+      </div>
+    <% end %>
+
+    
+  </div>  
+</div>

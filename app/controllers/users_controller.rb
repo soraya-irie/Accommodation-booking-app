@@ -10,6 +10,13 @@ class UsersController < ApplicationController
   end
   
   def account
-    
+    @user = current_user
+  end
+
+  def profile
+  end
+
+  def profile_edit
+    @user = current_user
   end
 end

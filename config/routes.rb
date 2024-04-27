@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root 'users#index'
   get '/rooms/own', to: 'rooms#own'
   get '/users/account', to: 'users#account'
+  get '/users/profile', to: 'users#profile'
+  get '/users/profile/edit', to: 'users#profile_edit'
   resources :users
   resources :rooms
   resources :reservations
