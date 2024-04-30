@@ -10,3 +10,8 @@
 .p-2 {
   width: fit-content;
 }
+
+.icon-image {
+  display: block;
+  margin-top: 10px;
+}

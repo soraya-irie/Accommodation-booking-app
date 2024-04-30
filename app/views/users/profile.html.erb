@@ -5,7 +5,8 @@
       
 
       <div class="p-2">
-     
+        <%= form.label :icon_image, "アイコン画像", class: 'form-label' %>
+        <%= image_tag(@user.icon_image.url, class: 'icon-image') %>
       </div>
 
       <div class="p-2">
@@ -15,7 +16,7 @@
 
       <div class="p-2">
         <%= form.label :self_introduction, "自己紹介", class: 'form-label' %>
-        <%= form.text_area :self_introduction, rows: 5, class: 'form-control' %>
+        <%= form.text_area :self_introduction, rows: 4, class: 'form-control' %>
       </div>
       <div class="p-2">
         <%= link_to "プロフィールを編集", users_profile_edit_path %>
