@@ -1,10 +1,9 @@
 class RoomsController < ApplicationController
   def index
-    if params[:search].present?
-      @rooms = Room.where("name LIKE ? OR introduction LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
-    else
-      @rooms = Room.all
-    end
+    @rooms = Room.all
+    @rooms = @rooms.search_by_area(params[:area]) if params[:area].present?
+    @rooms = @rooms.search_by_keyword(params[:keyword]) if params[:keyword].present?
+    @rooms_count = @rooms.count
   end
 
   def new

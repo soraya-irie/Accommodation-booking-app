@@ -1,0 +1,38 @@
+<div class="container">
+  <%= form_with(url: rooms_path, method: :get, local: true, class: "d-flex flex-column flex-md-row align-items-md-center justify-content-center") do |form| %>
+    <div class="p-2" style="max-width: 200px;">
+      <%= form.text_field :area, placeholder: "エリア名を入力", class: "form-control" %>
+    </div>
+    <div class="p-2" style="max-width: 200px;">
+      <%= form.text_field :keyword, placeholder: "キーワードを入力", class: "form-control" %>
+    </div>
+    <div class="p-2" style="max-width: 200px;">
+      <%= form.submit "検索", class: "btn btn-primary w-100" %>
+    </div>
+  <% end %>
+</div>
+
+
+<p><%= @rooms_count %> 件が見つかりました</p>
+<div class="container mt-3">
+  <div class="row">
+    <% @rooms.each_with_index do |room, index| %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img src="<%= room.room_image.url %>" class="card-img-top" alt="<%= room.name %>">
+          <div class="card-body">
+            <h5 class="card-title"><%= room.name %></h5>
+            <p class="card-text"><%= room.address %></p>
+            <p class="card-text"><%= room.introduction %></p>
+            <h6 class="card-text">¥<%= room.price_per_night %></h6>
+            <%= link_to '詳細はこちら', room_path(room), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+      <!-- 3つごとに行を分けるロジック -->
+      <% if (index + 1) % 3 == 0 && !@rooms.last.eql?(room) %>
+        </div><div class="row">
+      <% end %>
+    <% end %>
+  </div>
+</div>
