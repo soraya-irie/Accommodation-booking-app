@@ -19,10 +19,10 @@
     <% @rooms.each_with_index do |room, index| %>
       <div class="col-md-4 mb-4">
         <div class="card h-100">
-          <img src="<%= room.room_image.url %>" class="card-img-top" alt="<%= room.name %>">
+          <%= image_tag(room.room_image.url, class: 'card-img-top') %>
           <div class="card-body">
             <h5 class="card-title"><%= room.name %></h5>
-            <p class="card-text"><%= room.address %></p>
+            <p class="card-text"><small class="text-body-secondary"><%= room.address %></small></p>
             <p class="card-text"><%= room.introduction %></p>
             <h6 class="card-text">¥<%= room.price_per_night %></h6>
             <%= link_to '詳細はこちら', room_path(room), class: "btn btn-primary" %>

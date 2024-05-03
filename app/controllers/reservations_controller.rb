@@ -8,4 +8,9 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new
     @reservations = @room.reservations
   end
+
+  def confirm
+    @reservation = Reservation.find(params[:id])
+  end
+
 end

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/users/account', to: 'users#account'
   get '/users/profile', to: 'users#profile'
   get '/users/profile/edit', to: 'users#profile_edit'
+  get '/reservations/confirm', to: 'reserations#confirm'
   resources :users
   resources :rooms
   resources :reservations
