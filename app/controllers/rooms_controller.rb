@@ -21,7 +21,7 @@ class RoomsController < ApplicationController
   
   def show
     @room = Room.find(params[:id])
-    @reservation = Reservation.new
+    @reservation =Reservation.new
   end
 
   def edit
@@ -43,6 +43,8 @@ class RoomsController < ApplicationController
     redirect_to new_room_path if @rooms.empty?  
   end
 
+  
+  
   def room_params
     params.require(:room).permit(:name, :introduction, :price_per_night, :address, :room_image)
   end

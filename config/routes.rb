@@ -1,13 +1,25 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'users#index'
-  get '/rooms/own', to: 'rooms#own'
-  get '/users/account', to: 'users#account'
-  get '/users/profile', to: 'users#profile'
-  get '/users/profile/edit', to: 'users#profile_edit'
-  get '/reservations/confirm', to: 'reserations#confirm'
-  resources :users
-  resources :rooms
-  resources :reservations
   
+  get '/reservations/confirm', to: 'reservations#confirm'
+  resources :users do
+    collection do
+      get 'account'
+      get 'profile'
+      get 'profile/edit', to: 'users#profile_edit'
+    end
+  end
+
+  resources :rooms do
+    collection do
+      get 'own'
+    end
+  end
+
+  resources :reservations do
+    collection do
+      post 'confirm'
+    end
+  end
 end

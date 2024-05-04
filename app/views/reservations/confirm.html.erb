@@ -1,0 +1,16 @@
+<!-- app/views/reservations/confirm.html.erb -->
+
+<h2>Reservation Confirmation</h2>
+
+
+<p>Start Date: <%= @reservation.start_date %></p>
+<p>End Date: <%= @reservation.end_date %></p>
+<p>Number of People: <%= @reservation.number_of_people %></p>
+
+<%= form_with(model: @reservation, url: reservations_path, method: :post) do |form| %>
+  <%= form.hidden_field :start_date %>
+  <%= form.hidden_field :end_date %>
+  <%= form.hidden_field :number_of_people %>
+  <%= form.hidden_field :room_id %>
+  <%= form.submit 'Confirm Reservation' %>
+<% end %>

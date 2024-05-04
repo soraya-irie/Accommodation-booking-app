@@ -2,15 +2,22 @@ class ReservationsController < ApplicationController
   def index
     @reservations = Reservation.all
   end
-  
-  def show
-    @room = Room.find(params[:id])
+
+  def new
     @reservation = Reservation.new
-    @reservations = @room.reservations
   end
 
   def confirm
-    @reservation = Reservation.find(params[:id])
+    @reservation = Reservation.new(reservation_params)
   end
 
+  def show
+    @room = Room.find(params[:id])
+  end 
+  
+
+  private
+    def reservation_params
+      params.require(:reservation).permit(:user_id, :room_id, :start_date, :end_date, :total_price, :number_of_people, :created_at, :updated_at)
+    end
 end
