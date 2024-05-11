@@ -1,28 +1,28 @@
-<div class="container">
-  <h2>プロフィール編集画面</h2>
-  <div class="d-flex flex-column mb-3 align-items-center">
-    <%= form_with(model: @user, local: true) do |f| %>
-      <div class="p-2">
+<div class="container mt-5">
+  <h2 class="text-center mb-4">プロフィール編集画面</h2>
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <%= form_with(model: @user, local: true) do |f| %>
+        <div class="mb-3">
           <%= f.label :icon_image, "アイコン画像", class: 'form-label' %>
           <%= f.file_field :icon_image, class: 'form-control' %>
-          <%= image_tag(@user.icon_image.url, class: 'mt-3') %>
-      </div>
-      <div class="p-2">
-        <%= f.label :name, "名前", class: 'form-label' %>
-        <%= f.text_field :name, class: 'form-control' %>
-      </div>
-      <div class="p-2">
-        <%= f.label :self_introduction, "自己紹介", class: 'form-label' %>
-        <%= f.text_area :self_introduction, cols: "50", class: 'form-control', placeholder: "自己紹介を入力" %>
-      </div>
-      <div class="p-2">
-        <%= f.submit "保存", class: 'btn btn-primary' %>
-      </div>
-      <div class="p-2">
-        <%= link_to "戻る", profile_users_path %>
-      </div>
-    <% end %>
+          <%= image_tag(@user.icon_image.url, class: 'img-fluid mt-3') %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :name, "名前", class: 'form-label' %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :self_introduction, "自己紹介", class: 'form-label' %>
+          <%= f.text_area :self_introduction, class: 'form-control', placeholder: "自己紹介を入力" %>
+        </div>
+        <div class="mb-3 d-grid">
+          <%= f.submit "保存", class: 'btn btn-primary' %>
+        </div>
+        <div class="mb-3">
+          <%= link_to "戻る", profile_users_path, class: 'btn btn-outline-secondary' %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
-
-
