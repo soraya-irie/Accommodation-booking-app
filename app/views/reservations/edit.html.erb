@@ -1,0 +1,56 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">再予約ページ</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <%= form_with(model: @reservation, local: true, html: { multipart: true }) do |form| %>
+
+        <div class="mb-3">
+          <%= form.label :room_image, "施設画像", class: 'form-label' %>
+          <%= image_tag(@room.room_image.url, class: 'img-fluid mt-2 mb-3 w-100') %>
+        </div>
+
+        <!-- Room Information Display -->
+        <div class="card mb-3">
+          <div class="card-header">
+            施設情報
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <strong>施設名:</strong> <%= @room.name %>
+            </li>
+            <li class="list-group-item">
+              <strong>料金:</strong> ¥<%= @room.price_per_night %>
+            </li>
+            <li class="list-group-item">
+              <strong>部屋の紹介:</strong> <%= @room.introduction %>
+            </li>
+          </ul>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :start_date, "チェックイン", class: 'form-label' %>
+          <%= form.date_field :start_date, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :end_date, "チェックアウト", class: 'form-label' %>
+          <%= form.date_field :end_date, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :number_of_people, "人数", class: 'form-label' %>
+          <%= form.number_field :number_of_people, class: 'form-control' %>
+        </div>
+
+        <div class="mb-4">
+        <%= form.submit "再予約する", class: 'btn btn-primary w-100' %>
+        </div>
+
+        <div class="mb-4">
+          <%= link_to "戻る", reservations_path, class: 'btn btn-outline-secondary w-100' %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>

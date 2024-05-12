@@ -5,12 +5,12 @@
       <%= form_with(model: @user, local: true) do |f| %>
         <div class="mb-3">
           <%= f.label :email, class: 'form-label' %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', disabled: true %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', readonly: true %>
         </div>
 
         <div class="mb-3">
           <%= f.label :password, class: 'form-label' %>
-          <%= f.password_field :password, autocomplete: "current-password", class: 'form-control', value: '**********', disabled: true %>
+          <%= f.password_field :password, autocomplete: "current-password", class: 'form-control', value: '**********', readonly: true %>
         </div>
 
         <p class="mb-3">

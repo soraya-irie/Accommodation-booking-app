@@ -20,6 +20,21 @@ class ReservationsController < ApplicationController
     @room = Room.find(params[:id])
   end 
   
+  def edit
+    @reservation = Reservation.find(params[:id])
+    @user = @reservation.user
+    @room = @reservation.room
+  end
+
+  def update
+    @reservation = Reservation.find(params[:id])
+    if @reservation.update(reservation_params)
+      redirect_to reservations_path
+    else
+      render :edit
+    end
+  end
+
   def confirm
     @reservation = Reservation.new(reservation_params)
     @room = Room.find(params[:reservation][:room_id])

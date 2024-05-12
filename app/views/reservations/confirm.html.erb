@@ -9,6 +9,7 @@
                 <p><strong>日数:</strong> <%= @reservation.days_to_stay %>日</p>
                 <p><strong>人数:</strong> <%= @reservation.number_of_people %>人</p>
                 <p><strong>お支払い金額:</strong> ¥<%= @total_price %></p>
+                <p>上記内容で正しければ、「予約を確定」ボタンを押してください。</p>
             </div>
             <div class="card-footer d-flex justify-content-between">
                 <%= link_to 'ホームに戻る', root_path, class: 'btn btn-secondary' %>
