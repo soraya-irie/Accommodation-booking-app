@@ -62,3 +62,5 @@ gem "bcrypt", "~> 3.1"
 gem "carrierwave", "~> 3.0"
 
 gem "pry-rails", "~> 0.3.9"
+
+gem "rails-i18n", "~> 7.0"

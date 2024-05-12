@@ -5,14 +5,13 @@ class Reservation < ApplicationRecord
   validates :number_of_people, numericality: { greater_than_or_equal_to: 1 }
   validate :start_date_is_today_or_later
   validate :end_date_is_after_start_date
+
+  def days_to_stay
+    (end_date - start_date).to_i
+  end
 end
 
   private
-    
-    def days_to_stay
-      (end_date - start_date).to_i
-    end
-
     def start_date_is_today_or_later
       return if start_date.brank?
       errors.add(:start_date, 'は今日以降の日付出なければなりません。') if start_date < Date.today

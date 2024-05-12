@@ -11,11 +11,11 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.new(room_params)
+    @room = current_user.rooms.build(room_params)
     if @room.save
-      redirect_to root_path
+      redirect_to room_path(@room)
     else
-      render :new_room_path
+      render :new
     end
   end
   
@@ -33,14 +33,17 @@ class RoomsController < ApplicationController
 
   def destroy
     @room = Room.find(params[:id])
-    @room.destroy
-    flash[:notice] = "ユーザーを削除しました"
-    redirect_to :rooms_own
+    if @room.destroy
+      flash[:notice] = "施設を削除しました"
+    else
+      flash[:alert] = "施設の削除に失敗しました"
+    end
+
+    redirect_to own_rooms_path
   end
 
   def own
     @rooms = Room.all
-    redirect_to new_room_path if @rooms.empty?  
   end
 
   

@@ -11,12 +11,12 @@
 
         <div class="mb-3">
           <%= form.label :name, "名前", class: 'form-label' %>
-          <%= form.text_field :name, class: 'form-control' %>
+          <%= form.text_field :name, class: 'form-control', readonly: true %>
         </div>
 
         <div class="mb-3">
           <%= form.label :self_introduction, "自己紹介", class: 'form-label' %>
-          <%= form.text_area :self_introduction, rows: 4, class: 'form-control' %>
+          <%= form.text_area :self_introduction, rows: 4, class: 'form-control', readonly: true %>
         </div>
 
         <div class="mb-4">

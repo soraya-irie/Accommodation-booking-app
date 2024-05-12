@@ -11,22 +11,25 @@
         <div class="card-body p-4">
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="mb-3">
-              <%= f.label :email, class: 'form-label' %>
+              <%= f.label :email, "メールアドレス", class: 'form-label' %>
               <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
             </div>
 
             <div class="mb-3">
-              <%= f.label :password, class: 'form-label' %>
+              <%= f.label :password, "パスワード", class: 'form-label' %>
               <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
             </div>
 
             <div class="d-flex justify-content-center">
-              <%= f.submit "Log in", class: 'btn btn-primary' %>
+              <%= f.submit "ログイン", class: 'btn btn-primary' %>
             </div>
           <% end %>
         </div>
       </div>
-      <%= render "devise/shared/links" %>
+      <div class="pt-3">
+        <%= render "devise/shared/links" %>
+      </div>
+      
     </div>  
   </div>
 </div>

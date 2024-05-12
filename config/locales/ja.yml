@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      room: ルーム
+    attributes:
+      room:
+        name: 施設名
+        introduction: 施設詳細
+        price_per_night: 料金
+        address: 住所
