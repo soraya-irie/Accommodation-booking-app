@@ -1,6 +1,8 @@
 class ReservationsController < ApplicationController
+  
   def index
-    @reservations = current_user.reservations
+     @reservations = Reservation.all
+
   end
 
   def new
@@ -8,11 +10,12 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = current_user.reservations.new(reservation_params)
+    @reservation = Reservation.new(reservation_params)
+    @room = @reservation.room
     if @reservation.save
       redirect_to reservations_path
     else
-      render :confirm
+      render 'confirm', status: :unprocessable_entity
     end
   end
 
@@ -28,17 +31,12 @@ class ReservationsController < ApplicationController
 
   def update
     @reservation = Reservation.find(params[:id])
+    @room = @reservation.room
     if @reservation.update(reservation_params)
       redirect_to reservations_path
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
-  end
-
-  def confirm
-    @reservation = Reservation.new(reservation_params)
-    @room = Room.find(params[:reservation][:room_id])
-    @total_price = @room.price_per_night * @reservation.days_to_stay * @reservation.number_of_people
   end
 
   def destroy
@@ -46,6 +44,20 @@ class ReservationsController < ApplicationController
     @reservation.destroy
     redirect_to reservations_path
   end
+  
+
+  def confirm
+    @reservation = Reservation.new(reservation_params)
+    @reservation.user = current_user
+    @room = @reservation.room
+    if @reservation.invalid?
+      render 'rooms/show'
+    else
+      render 'confirm'
+    end
+  end
+    
+
   private
     def reservation_params
       params.require(:reservation).permit(:user_id, :room_id, :start_date, :end_date, :total_price, :number_of_people)

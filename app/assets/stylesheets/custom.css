@@ -15,3 +15,12 @@
   display: block;
   margin-top: 10px;
 }
+
+.table td, .table th {
+  vertical-align: middle;  
+}
+
+.introduction-cell {
+  max-width: 300px;
+  word-wrap: break-word;
+}

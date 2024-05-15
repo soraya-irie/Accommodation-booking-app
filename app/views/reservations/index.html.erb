@@ -20,8 +20,8 @@
         <tr>
           <td><%= image_tag(reservation.room.room_image.url, width: "100", height: "auto") %></td>
           <td><%= link_to reservation.room.name, room_path(reservation.room.id) %></td>
-          <td><%= reservation.room.introduction %></td>
-          <td><%= reservation.total_price %></td>
+          <td class="introduction-cell"><%= reservation.room.introduction %></td>
+          <td>¥<%= reservation.total_price %></td>
           <td><%= reservation.start_date.strftime("%Y/%m/%d") %></td>
           <td><%= reservation.end_date.strftime("%Y/%m/%d") %></td>
           <td><%= reservation.created_at.strftime("%Y/%m/%d %H:%M") %></td>
@@ -33,7 +33,7 @@
                   <%= link_to '再予約', edit_reservation_path(reservation), class: 'dropdown-item' %>
                 </li>
                 <li>
-                  <%= link_to '削除', reservation_path(reservation), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'dropdown-item' %>
+                  <%= link_to '削除', reservation_path(reservation), method: :delete, data: { confirm: '予約を削除しますか？' }, class: 'dropdown-item' %>
                 </li>
               </ul>
             </div>

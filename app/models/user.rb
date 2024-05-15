@@ -7,5 +7,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one_attached :icon_image
   mount_uploader :icon_image, IconUploader
-  validates :name, :email, presence: true
+  validates :name, :email, :password, :current_password, :password_confirmation, presence: true
 end

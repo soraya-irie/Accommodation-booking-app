@@ -18,28 +18,28 @@
           <h2 class="text-center mb-4">新規登録</h2>
           <%= form_with(model: @room, local: true, html: { multipart: true }) do |f| %>
             <div class="mb-3">
-              <%= f.label :name, "施設名", {class: 'form-label'} %>
-              <%= f.text_field :name, {class: 'form-control'} %>
+              <%= f.label :name, "施設名", class: 'form-label' %>
+              <%= f.text_field :name, class: 'form-control' %>
             </div>
             <div class="mb-3">
-              <%= f.label :introduction, "施設詳細", {class: 'form-label'} %>
-              <%= f.text_area :introduction, {class: 'form-control'} %>
+              <%= f.label :introduction, "施設詳細", class: 'form-label' %>
+              <%= f.text_area :introduction, class: 'form-control', placeholder: '最大150字まで' %>
             </div>
             <div class="mb-3">
-              <%= f.label :price_per_night, "料金", {class: 'form-label'} %>
+              <%= f.label :price_per_night, "料金", class: 'form-label' %>
               <%= f.number_field :price_per_night, {class: 'form-control'} %>
             </div>
             <div class="mb-3">
-              <%= f.label :address, "住所", {class: 'form-label'} %>
-              <%= f.text_field :address, {class: 'form-control'} %>
+              <%= f.label :address, "住所", class: 'form-label' %>
+              <%= f.text_field :address, class: 'form-control' %>
             </div>
             <div class="mb-3">
-              <%= f.label :room_image, "施設画像", {class: 'form-label'} %>
-              <%= f.file_field :room_image, {class: 'form-control'} %>
+              <%= f.label :room_image, "施設画像", class: 'form-label' %>
+              <%= f.file_field :room_image, class: 'form-control' %>
             </div>
             <div class="d-grid gap-2">
-              <%= f.submit "保存", {class: 'btn btn-primary btn-block'} %>
-              <%= link_to "戻る", :root, {class: 'btn btn-outline-secondary btn-block'} %>
+              <%= f.submit "保存", class: 'btn btn-primary btn-block' %>
+              <%= link_to "戻る", :root, class: 'btn btn-outline-secondary btn-block' %>
             </div>
           <% end %>
         </div>

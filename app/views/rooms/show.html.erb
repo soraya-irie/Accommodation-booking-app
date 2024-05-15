@@ -12,49 +12,65 @@
   <% end %>
 </div>
 
+<% relevant_errors = @reservation.errors.full_messages.select do |message| %>
+  <% message.include?("チェックイン") || message.include?("チェックアウト") || message.include?("人数") %>
+<% end %>
+
+<% if relevant_errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">以下のエラーが発生しました：</h4>
+    <ul>
+      <% relevant_errors.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
 <div class="container-fluid">
-    <div class="card mb-0">
-        <div class="row g-0">
-            <div class="col-12 col-md-4">
-                <%= image_tag(@room.room_image.url, class: 'img-fluid rounded-start') %>
-            </div>
-            <div class="col-12 col-md-8">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                      <h5 class="card-title"><%= @room.name %></h5>
-                      <p class="card-text fs-4">¥<%= @room.price_per_night %>~</p>
-                    </div>
-                    <p class="card-text"><%= @room.introduction %></p>
-                    <div>
-                        <%= form_with(model: @reservation, url: confirm_reservations_path, local: true, class: "d-flex flex-column align-items-md-center justify-content-center") do |form| %>
-                          <div class="d-flex flex-md-row align-items-md-center">
-                            <%= form.hidden_field :room_id %>
-                            <div class="p-2" style="max-width: 200px;">
-                              <%= form.label :start_date, "チェックイン", class: 'form-label' %>
-                              <%= form.date_field :start_date, class: 'form-control' %>
-                            </div>
-                            <div class="p-2" style="max-width: 200px;">
-                              <%= form.label :end_date, "チェックアウト", class: 'form-label' %>
-                              <%= form.date_field :end_date, class: 'form-control' %>
-                            </div>
-                            <div class="p-2" style="max-width: 200px;">
-                              <%= form.label :number_of_people, "人数", class: 'form-label' %>
-                              <%= form.number_field :number_of_people, min: 1, step: 1, class: 'form-control' %>
-                            </div>
-                          </div>
-                          <div class="p-2" style="max-width: 200px;">
-                            <% if user_signed_in? %>
-                              <%= form.submit "予約する", class: "btn btn-primary w-100" %>
-                            <% else %>
-                              <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary w-100" %>
-                            <% end %>
-                          </div>
-                        <% end %> 
-                    </div>
+  <div class="card mb-0">
+    <div class="row g-0">
+      <div class="col-12 col-md-4">
+        <%= image_tag(@room.room_image.url, class: 'img-fluid rounded-start') %>
+      </div>
+      <div class="col-12 col-md-8">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <h5 class="card-title"><%= @room.name %></h5>
+            <p class="card-text fs-4">¥<%= @room.price_per_night %>~</p>
+          </div>
+          <p class="card-text"><%= @room.introduction %></p>
+          <div>
+            <%= form_with(model: @reservation, url:  confirm_reservations_path, local: true, class: "d-flex flex-column align-items-md-center justify-content-center") do |form| %>
+              <div class="d-flex flex-md-row align-items-md-center">
+                <%= form.hidden_field :room_id, value: @room.id %>
+                <div class="p-2" style="max-width: 200px;">
+                  <%= form.label :start_date, "チェックイン", class: 'form-label' %>
+                  <%= form.date_field :start_date, class: 'form-control' %>
                 </div>
-            </div>
+                <div class="p-2" style="max-width: 200px;">
+                  <%= form.label :end_date, "チェックアウト", class: 'form-label' %>
+                  <%= form.date_field :end_date, class: 'form-control' %>
+                </div>
+                <div class="p-2" style="max-width: 200px;">
+                  <%= form.label :number_of_people, "人数", class: 'form-label' %>
+                  <%= form.number_field :number_of_people, min: 1, step: 1, class: 'form-control' %>
+                </div>
+              </div>
+              <div class="p-2" style="max-width: 200px;">
+                <% if user_signed_in? %>
+                  <%= form.submit "予約する", class: "btn btn-primary w-100" %>
+                <% else %>
+                  <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary w-100" %>
+                <% end %>
+              </div>
+            <% end %> 
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
 
@@ -68,6 +84,3 @@
   <% end %>
 </div>
 
-<%= form_with(url: confirm_reservations_path, local: true) do |form| %>
-  <%= form.hidden_field :id %>
-<% end %>

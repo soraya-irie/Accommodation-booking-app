@@ -1,3 +1,14 @@
+<% if @user.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">以下のエラーが発生しました：</h4>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="container mt-5">
   <h2 class="text-center mb-4">プロフィール編集画面</h2>
   <div class="row justify-content-center">
@@ -20,7 +31,7 @@
           <%= f.submit "保存", class: 'btn btn-primary' %>
         </div>
         <div class="mb-3">
-          <%= link_to "戻る", profile_users_path, class: 'btn btn-outline-secondary' %>
+          <%= link_to "戻る", profile_users_path, class: 'btn btn-outline-secondary w-100' %>
         </div>
       <% end %>
     </div>

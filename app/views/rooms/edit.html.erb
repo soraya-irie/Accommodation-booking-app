@@ -1,9 +1,20 @@
+<% if @room.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">以下のエラーが発生しました：</h4>
+    <ul>
+      <% @room.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-6"> <!-- 幅をcol-md-8からcol-md-6に変更 -->
       <div class="card shadow-sm">
         <div class="card-body">
-          <h2 class="text-center mb-4">施設情報の編集画面</h2>
+          <h2 class="text-center mb-4">施設情報の編集ページ</h2>
           <%= form_with(model: @room, local: true, html: { multipart: true }) do |f| %>
             <div class="mb-3">
               <%= f.label :name, "施設名", class: 'form-label' %>
@@ -27,7 +38,7 @@
             </div>
             <div class="d-grid gap-2">
               <%= f.submit "保存", class: 'btn btn-primary' %>
-              <%= link_to "戻る", rooms_path, class: 'btn btn-outline-secondary' %>
+              <%= link_to "戻る", own_rooms_path, class: 'btn btn-outline-secondary' %>
             </div>
           <% end %>
         </div>

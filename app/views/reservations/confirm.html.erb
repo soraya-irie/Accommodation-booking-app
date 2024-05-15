@@ -1,25 +1,26 @@
 <div class="container mt-5">
-        <div class="card">
-            <div class="card-header">
-                <h2 class="card-title">予約情報</h2>
-            </div>
-            <div class="card-body">
-                <p><strong>チェックイン:</strong> <%= @reservation.start_date.strftime("%Y/%m/%d") %></p>
-                <p><strong>チェックアウト:</strong> <%= @reservation.end_date.strftime("%Y/%m/%d") %></p>
-                <p><strong>日数:</strong> <%= @reservation.days_to_stay %>日</p>
-                <p><strong>人数:</strong> <%= @reservation.number_of_people %>人</p>
-                <p><strong>お支払い金額:</strong> ¥<%= @total_price %></p>
-                <p>上記内容で正しければ、「予約を確定」ボタンを押してください。</p>
-            </div>
-            <div class="card-footer d-flex justify-content-between">
-                <%= link_to 'ホームに戻る', root_path, class: 'btn btn-secondary' %>
-                <%= form_with(model: @reservation, local: true) do |form| %>
-                    <%= form.hidden_field :start_date %>
-                    <%= form.hidden_field :end_date %>
-                    <%= form.hidden_field :number_of_people %>
-                    <%= form.hidden_field :room_id %>
-                    <%= submit_tag '予約を確定', class: 'btn btn-primary' %>
-                <% end %>
-            </div>
-        </div>
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">予約情報</h2>
     </div>
+    <div class="card-body">
+      <p><strong>チェックイン:</strong> <%= @reservation.start_date.strftime("%Y/%m/%d") %></p>
+      <p><strong>チェックアウト:</strong> <%= @reservation.end_date.strftime("%Y/%m/%d") %></p>
+      <p><strong>日数:</strong> <%= @reservation.days_to_stay %>日</p>
+      <p><strong>人数:</strong> <%= @reservation.number_of_people %>人</p>
+      <p><strong>お支払い金額:</strong> ¥<%= @reservation.total_price %></p>
+      <p>上記内容で正しければ、「予約を確定」ボタンを押してください。</p>
+    </div>
+    <div class="card-footer d-flex justify-content-between">
+      <%= link_to '戻る', room_path(@room), class: 'btn btn-secondary' %>
+      <%= form_with(model: @reservation, local: true, url: reservations_path, method: :post) do |form| %>
+        <%= form.hidden_field :start_date %>
+        <%= form.hidden_field :end_date %>
+        <%= form.hidden_field :number_of_people %>
+        <%= form.hidden_field :room_id %>
+        <%= form.hidden_field :total_price %>
+        <%= submit_tag '予約を確定', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>

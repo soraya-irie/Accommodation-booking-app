@@ -11,17 +11,17 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = current_user.rooms.build(room_params)
+    @room = current_user.rooms.new(room_params)
     if @room.save
       redirect_to room_path(@room)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
   
   def show
     @room = Room.find(params[:id])
-    @reservation =Reservation.new(room_id: @room.id)
+    @reservation = @room.reservations.build
   end
 
   def edit
@@ -33,7 +33,7 @@ class RoomsController < ApplicationController
     if @room.update(room_params)
       redirect_to room_path(@room)
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -49,7 +49,7 @@ class RoomsController < ApplicationController
   end
 
   def own
-    @rooms = Room.all
+    @rooms = current_user.rooms
   end
 
   

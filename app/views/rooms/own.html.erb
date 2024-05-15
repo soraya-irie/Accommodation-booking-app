@@ -17,8 +17,8 @@
         <tr>
           <td><%= image_tag(room.room_image.url, width: "100", height: "auto") %></td>
           <td><%= link_to room.name, room_path(room) %></td>
-          <td><%= room.introduction %></td>
-          <td><%= room.price_per_night %>~</td>
+          <td class="introduction-cell"><%= room.introduction %></td>
+          <td>¥<%= room.price_per_night %>~</td>
           
           <td><%= room.created_at.strftime('%Y/%m/%d') %></td>
           <td>
@@ -30,7 +30,7 @@
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <li><%= link_to '編集', edit_room_path(room), class: 'dropdown-item' %></li>
-                <li><%= link_to '削除', room_path(room), class: 'dropdown-item', method: :delete, data: { confirm: '本当に削除しますか？' } %></li>
+                <li><%= link_to '削除', room_path(room), class: 'dropdown-item', method: :delete, data: { confirm: '施設を削除しますか？' } %></li>
               </ul>
             </div>
           </td>

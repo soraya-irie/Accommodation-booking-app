@@ -2,9 +2,22 @@ ja:
   activerecord:
     models:
       room: ルーム
+      reservation: 予約
+      user: ユーザー
     attributes:
       room:
         name: 施設名
         introduction: 施設詳細
         price_per_night: 料金
         address: 住所
+      reservation:
+        start_date: チェックイン
+        end_date: チェックアウト
+        total_price: 合計料金
+        number_of_people: 人数
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        current_password: 現在のパスワード
