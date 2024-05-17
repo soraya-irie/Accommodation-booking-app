@@ -18,6 +18,25 @@ ja:
       user:
         name: 名前
         email: メールアドレス
+        self_introduction: 自己紹介
         password: パスワード
         password_confirmation: 確認用パスワード
         current_password: 現在のパスワード
+
+  errors:
+    messages:
+      not_saved: "エラーが発生しました。"
+  devise:
+    failure:
+      user:
+        invalid: "ユーザー情報が無効です。"
+      invalid: "無効な情報が提供されました。"
+    sessions:
+      user:
+        signed_in: "ログインしました。"
+        signed_out: "ログアウトしました。"
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+    registrations:
+      signed_up: "登録しました。"
+      updated: "アカウント情報が更新されました。"

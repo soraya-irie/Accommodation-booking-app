@@ -1,8 +1,8 @@
 class ReservationsController < ApplicationController
   
   def index
-     @reservations = Reservation.all
-
+    @reservations = Reservation.all
+    @reservations = @reservations.where(user_id: current_user.id)
   end
 
   def new
@@ -11,8 +11,10 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.new(reservation_params)
+    @reservation.user = current_user
     @room = @reservation.room
     if @reservation.save
+      flash[:notice] = "予約が完了しました"
       redirect_to reservations_path
     else
       render 'confirm', status: :unprocessable_entity
@@ -33,6 +35,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
     @room = @reservation.room
     if @reservation.update(reservation_params)
+      flash[:notice] = "予約を更新しました"
       redirect_to reservations_path
     else
       render :edit, status: :unprocessable_entity
@@ -41,7 +44,11 @@ class ReservationsController < ApplicationController
 
   def destroy
     @reservation = Reservation.find(params[:id])
-    @reservation.destroy
+    if @reservation.destroy
+      flash[:notice] = "予約を削除しました"
+    else
+      flash[:alert] = "予約の削除に失敗しました"
+    end
     redirect_to reservations_path
   end
   

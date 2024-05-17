@@ -11,8 +11,10 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = current_user.rooms.new(room_params)
+    @room = current_user.rooms.build(room_params)
+    @room.user_id = current_user.id
     if @room.save
+      flash[:notice] = "施設を登録しました"
       redirect_to room_path(@room)
     else
       render :new, status: :unprocessable_entity
@@ -31,6 +33,7 @@ class RoomsController < ApplicationController
   def update
     @room = Room.find(params[:id])
     if @room.update(room_params)
+      flash[:notice] = "施設を更新しました"
       redirect_to room_path(@room)
     else
       render :edit, status: :unprocessable_entity
@@ -49,10 +52,9 @@ class RoomsController < ApplicationController
   end
 
   def own
-    @rooms = current_user.rooms
+    @rooms = Room.all
+    @rooms = @rooms.where(user_id: current_user.id)
   end
-
-  
   
   def room_params
     params.require(:room).permit(:name, :introduction, :price_per_night, :address, :room_image)
