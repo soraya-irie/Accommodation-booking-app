@@ -1,16 +1,4 @@
-<div class="container mb-5 mt-3">
-  <%= form_with(url: rooms_path, method: :get, local: true, class: "d-flex flex-column flex-md-row align-items-md-center justify-content-center") do |form| %>
-    <div class="p-2" style="max-width: 200px;">
-      <%= form.text_field :area, placeholder: "エリア名を入力", class: "form-control" %>
-    </div>
-    <div class="p-2" style="max-width: 200px;">
-      <%= form.text_field :keyword, placeholder: "キーワードを入力", class: "form-control" %>
-    </div>
-    <div class="p-2" style="max-width: 200px;">
-      <%= form.submit "検索", class: "btn btn-primary w-100" %>
-    </div>
-  <% end %>
-</div>
+<%= render 'users/search_form_2nd' %>
 
 <% relevant_errors = @reservation.errors.full_messages.select do |message| %>
   <% message.include?("チェックイン") || message.include?("チェックアウト") || message.include?("人数") %>
@@ -28,7 +16,7 @@
 <% end %>
 
 
-<div class="container-fluid">
+<div class="container-fluid mt-5">
   <div class="card mb-0">
     <div class="row g-0">
       <div class="col-12 col-md-4">
@@ -76,10 +64,8 @@
 
 
 <div class="p-3 fs-3">
-  <%= link_to(rooms_path, class: 'text-decoration-none') do %>
-    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-arrow-left me-2" viewBox="0 0 16 16">
-      <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-    </svg>
+  <%= link_to(:back, class: 'text-decoration-none') do %>
+    <%= image_tag("arrow-back-blue-5ba5838a3c587f1a4be9883cc3c9f90a6bbd0da4d559b6353d943dbd7de3bd06.svg", alt: "back-arrow-icon") %>
     戻る
   <% end %>
 </div>

@@ -1,18 +1,4 @@
-<div class="container pt-4">
-  <%= form_with(url: rooms_path, method: :get, local: true, class: "d-flex flex-column flex-md-row align-items-md-center justify-content-center") do |form| %>
-    <div class="p-2" style="max-width: 200px;">
-      <%= form.text_field :area, placeholder: "エリア名を入力", class: "form-control" %>
-    </div>
-    <div class="p-2" style="max-width: 200px;">
-      <%= form.text_field :keyword, placeholder: "キーワードを入力", class: "form-control" %>
-    </div>
-    <div class="p-2" style="max-width: 200px;">
-      <%= form.submit "検索", class: "btn btn-primary w-100" %>
-    </div>
-  <% end %>
-</div>
-
-
+<%= render 'users/search_form_2nd' %>
 
 <div class="container mt-3">
   <p><%= @rooms_count %> 件が見つかりました</p>

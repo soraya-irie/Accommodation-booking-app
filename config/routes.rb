@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   root 'users#index'
   
-  get '/reservations/confirm', to: 'reservations#confirm'
   resources :users do
     collection do
       get 'account'
@@ -21,6 +20,7 @@ Rails.application.routes.draw do
   resources :reservations do
     collection do
       post 'confirm'
+      get 'confirm'
     end
   end
 end
