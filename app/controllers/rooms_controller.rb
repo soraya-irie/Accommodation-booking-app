@@ -1,8 +1,14 @@
 class RoomsController < ApplicationController
+  VALID_AREAS = ["東京", "大阪", "京都", "札幌"]
+
   def index
     @rooms = Room.all
-    @rooms = @rooms.search_by_area(params[:area]) if params[:area].present?
-    @rooms = @rooms.search_by_keyword(params[:keyword]) if params[:keyword].present?
+    if params[:area].present? && VALID_AREAS.include?(params[:area])
+      @rooms = @rooms.search_by_area(params[:area])
+    end
+    if params[:keyword].present?
+      @rooms = @rooms.search_by_keyword(params[:keyword])
+    end
     @rooms_count = @rooms.count
   end
 

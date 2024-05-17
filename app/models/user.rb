@@ -8,11 +8,7 @@ class User < ApplicationRecord
   has_one_attached :icon_image
   mount_uploader :icon_image, IconUploader
   
-  validates :password, :current_password, :password_confirmation, presence: true
-
-  
-  validates :name, :self_introduction, presence: true
-
+  validates :name, :email, :self_introduction, presence: true
   validates :email, uniqueness: true
   
 
