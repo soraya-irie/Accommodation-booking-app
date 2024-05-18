@@ -3,49 +3,14 @@
 <div class="container mt-5">
   <h1 class="mb-5">おすすめのエリア</h1>
   <div class="row">
-    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
-      <div class="card position-relative">
-        <%= link_to image_tag("recommended_area/東京.jpg", class: "card-img-top", alt: "東京の画像"), rooms_path(area: "東京") %>
-        <div class="position-absolute bottom-0 p-3 text-white fs-1 fw-medium">
-          東京
-          <br>
-          <%= image_tag("map_icon/geo-alt.svg", style: "height: 1em; width: auto;") %>
-          Tokyo
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
-      <div class="card position-relative">
-        <%= link_to image_tag("recommended_area/大阪.webp", class: "card-img-top", alt: "大阪の画像"), rooms_path(area: "大阪") %>
-        <div class="position-absolute bottom-0 p-3 text-white fs-1 fw-medium">
-          大阪
-          <br>
-          <%= image_tag("map_icon/geo-alt.svg", style: "height: 1em; width: auto;") %>
-          Osaka
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
-      <div class="card relative">
-        <%= link_to image_tag("recommended_area/京都.jpg", class: "card-img-top", alt: "京都の画像"), rooms_path(area: "京都") %>
-        <div class="position-absolute bottom-0 p-3 text-white fs-1 fw-medium">
-          京都
-          <br>
-          <%= image_tag("map_icon/geo-alt.svg", style: "height: 1em; width: auto;") %>
-          Kyoto
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
-      <div class="card relative">
-        <%= link_to image_tag("recommended_area/札幌.jpg", class: "card-img-top", alt: "札幌の画像"), rooms_path(area: "札幌") %>
-        <div class="position-absolute bottom-0 p-3 text-white fs-1 fw-medium">
-          札幌
-          <br>
-          <%= image_tag("map_icon/geo-alt.svg", style: "height: 1em; width: auto;") %>
-          Sapporo
-        </div>
-      </div>
-    </div>
+    <% areas = [
+      { name: "東京", english_name: "Tokyo", image: "東京.jpg" },
+      { name: "大阪", english_name: "Osaka", image: "大阪.webp" },
+      { name: "京都", english_name: "Kyoto", image: "京都.jpg" },
+      { name: "札幌", english_name: "Sapporo", image: "札幌.jpg" }
+    ] %>
+    <% areas.each do |area| %>
+      <%= render partial: "users/recommended_area", locals: { area: area } %>
+    <% end %>
   </div>
 </div>

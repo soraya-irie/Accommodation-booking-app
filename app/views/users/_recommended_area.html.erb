@@ -1,0 +1,11 @@
+<div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
+  <div class="card position-relative">
+    <%= link_to image_tag("recommended_area/#{area[:image]}", class: "card-img-top", alt: "#{area[:name]}の画像"), rooms_path(area: area[:name]) %>
+    <div class="position-absolute bottom-0 p-3 text-white fs-1 fw-medium">
+      <%= area[:name] %>
+      <br>
+      <%= image_tag("map_icon/geo-alt.svg", style: "height: 1em; width: auto;") %>
+      <%= area[:english_name] %>
+    </div>
+  </div>
+</div>
