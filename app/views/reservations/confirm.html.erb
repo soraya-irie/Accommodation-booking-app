@@ -1,0 +1,37 @@
+<% if @reservation.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">以下のエラーが発生しました：</h4>
+    <ul>
+      <% @reservation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">予約情報</h2>
+    </div>
+    <div class="card-body">
+      <p><strong>チェックイン:</strong> <%= @reservation.start_date.strftime("%Y/%m/%d") %></p>
+      <p><strong>チェックアウト:</strong> <%= @reservation.end_date.strftime("%Y/%m/%d") %></p>
+      <p><strong>日数:</strong> <%= @reservation.days_to_stay %>日</p>
+      <p><strong>人数:</strong> <%= @reservation.number_of_people %>人</p>
+      <p><strong>お支払い金額:</strong> ¥<%= @reservation.total_price %></p>
+      <p>上記内容で正しければ、「予約を確定」ボタンを押してください。</p>
+    </div>
+    <div class="card-footer d-flex justify-content-between">
+      <%= link_to '戻る', room_path(@room), class: 'btn btn-secondary' %>
+      <%= form_with(model: @reservation, local: true) do |form| %>
+        <%= form.hidden_field :start_date, value: @reservation.start_date %>
+        <%= form.hidden_field :end_date, value: @reservation.end_date %>
+        <%= form.hidden_field :number_of_people, value: @reservation.number_of_people %>
+        <%= form.hidden_field :room_id, value: @room.id%>
+        <%= form.hidden_field :total_price, value: @reservation.total_price %>
+        <%= form.submit '予約を確定', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>

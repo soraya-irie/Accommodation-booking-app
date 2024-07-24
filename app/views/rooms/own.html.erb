@@ -1,0 +1,39 @@
+<div class="container">
+  <h3 class="pt-3">施設一覧</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>施設画像</th>
+        <th>施設名</th>
+        <th>紹介文</th>
+        <th>宿泊料金</th>
+        <th>作成日</th>
+        <th>編集/削除</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @rooms.each do |room| %>
+        <tr>
+          <td><%= image_tag(room.room_image.url, width: "100", height: "auto") %></td>
+          <td><%= link_to room.name, room_path(room) %></td>
+          <td class="introduction-cell"><%= room.introduction %></td>
+          <td>¥<%= room.price_per_night %>~</td>
+          
+          <td><%= room.created_at.strftime('%Y/%m/%d') %></td>
+          <td>
+            <div class="dropdown">
+              <button class="btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <%= image_tag("three-dot-menu-0c042cde96cc73e058e97d09a24944eb2914eb8c152d418dc6fc6964251fdaa2.svg", alt: "theree-dot-icon") %>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><%= link_to '編集', edit_room_path(room), class: 'dropdown-item' %></li>
+                <li><%= link_to '削除', room_path(room), class: 'dropdown-item', method: :delete, data: { confirm: '施設を削除しますか？' } %></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

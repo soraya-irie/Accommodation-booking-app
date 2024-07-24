@@ -1,0 +1,16 @@
+<%= render 'users/search_form' %>
+
+<div class="container mt-5">
+  <h1 class="mb-5">おすすめのエリア</h1>
+  <div class="row">
+    <% areas = [
+      { name: "東京", english_name: "Tokyo", image: "東京.jpg" },
+      { name: "大阪", english_name: "Osaka", image: "大阪.webp" },
+      { name: "京都", english_name: "Kyoto", image: "京都.jpg" },
+      { name: "札幌", english_name: "Sapporo", image: "札幌.jpg" }
+    ] %>
+    <% areas.each do |area| %>
+      <%= render partial: "users/recommended_area", locals: { area: area } %>
+    <% end %>
+  </div>
+</div>

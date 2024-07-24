@@ -54,3 +54,15 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem "devise", "~> 4.9"
+
+gem "bcrypt", "~> 3.1"
+
+gem "carrierwave", "~> 3.0"
+
+gem "pry-rails", "~> 0.3.9"
+
+gem "rails-i18n", "~> 7.0"
+
+gem "faker", "~> 3.3"

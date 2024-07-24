@@ -1,0 +1,50 @@
+/* app/assets/stylesheets/application.css */
+.form-group {
+  width: 100%; /* フォームの幅を調整 */
+}
+
+.form-label {
+  font-weight: bold; /* ラベルのフォントウェイトを調整 */
+}
+
+.p-2 {
+  width: fit-content;
+}
+
+.icon-image {
+  display: block;
+  margin-top: 10px;
+}
+
+.table td, .table th {
+  vertical-align: middle;  
+}
+
+.introduction-cell {
+  max-width: 300px;
+  word-wrap: break-word;
+}
+
+.flash {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.flash.notice {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.flash.alert {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.circular-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 8px;
+}

@@ -1,0 +1,42 @@
+ja:
+  activerecord:
+    models:
+      room: ルーム
+      reservation: 予約
+      user: ユーザー
+    attributes:
+      room:
+        name: 施設名
+        introduction: 施設詳細
+        price_per_night: 料金
+        address: 住所
+      reservation:
+        start_date: チェックイン
+        end_date: チェックアウト
+        total_price: 合計料金
+        number_of_people: 人数
+      user:
+        name: 名前
+        email: メールアドレス
+        self_introduction: 自己紹介
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        current_password: 現在のパスワード
+
+  errors:
+    messages:
+      not_saved: "エラーが発生しました。"
+  devise:
+    failure:
+      user:
+        invalid: "ユーザー情報が無効です。"
+      invalid: "無効な情報が提供されました。"
+    sessions:
+      user:
+        signed_in: "ログインしました。"
+        signed_out: "ログアウトしました。"
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+    registrations:
+      signed_up: "登録しました。"
+      updated: "アカウント情報が更新されました。"

@@ -1,0 +1,39 @@
+<% if @user.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">以下のエラーが発生しました：</h4>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="container mt-5">
+  <h2 class="text-center mb-4">プロフィール編集ページ</h2>
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <%= form_with(model: @user, local: true) do |f| %>
+        <div class="mb-3">
+          <%= f.label :icon_image, "アイコン画像", class: 'form-label' %>
+          <%= f.file_field :icon_image, class: 'form-control' %>
+          <%= image_tag(@user.icon_image.url, class: 'img-fluid mt-3') %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :name, "名前", class: 'form-label' %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :self_introduction, "自己紹介", class: 'form-label' %>
+          <%= f.text_area :self_introduction, class: 'form-control', placeholder: "自己紹介を入力" %>
+        </div>
+        <div class="mb-3 d-grid">
+          <%= f.submit "保存", class: 'btn btn-primary' %>
+        </div>
+        <div class="mb-3">
+          <%= link_to "戻る", profile_users_path, class: 'btn btn-outline-secondary w-100' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
